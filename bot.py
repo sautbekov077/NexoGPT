@@ -32,11 +32,8 @@ FREE_MODELS = [
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработчик команды /start"""
     welcome_text = """
-🤖 Привет! Я AI-бот с интеграцией OpenRouter.
-
-Использую бесплатные модели для генерации ответов.
-
-Просто напиши мне сообщение, и я отвечу с помощью AI!
+🤖 Сәлем! Мен NexoGPT, жасанды интеллект қосылған телеграм ботпын!
+Саған қалай көмектесе аламын?
 """
     await update.message.reply_text(welcome_text)
 
@@ -89,7 +86,7 @@ async def get_ai_response(prompt: str) -> str:
                     }
                 ],
                 "temperature": 0.7,
-                "max_tokens": 800
+                "max_tokens": 6000
             }
 
             response = requests.post(OPENROUTER_API_URL, headers=headers, json=payload, timeout=45)
@@ -134,4 +131,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()

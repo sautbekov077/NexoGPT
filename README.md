@@ -1,0 +1,2 @@
+# NexoGPT
+Kazakh Language bot

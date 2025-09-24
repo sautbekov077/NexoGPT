@@ -43,7 +43,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
 
     if not user_message.strip():
-        await update.message.reply_text("Пожалуйста, отправьте текст для обработки.")
+        await update.message.reply_text("Текст жазуыңызды сұраймын.")
         return
 
     try:
@@ -58,7 +58,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     except Exception as e:
         logger.error(f"Ошибка: {e}")
-        await update.message.reply_text("Извините, произошла ошибка при обработке запроса. Попробуйте позже.")
+        await update.message.reply_text("Сұраныс кезінде қате пайда болды, кейінірек қайталап көріңіз.")
 
 
 async def get_ai_response(prompt: str) -> str:
@@ -104,7 +104,7 @@ async def get_ai_response(prompt: str) -> str:
             continue
 
     # Если все модели не сработали
-    return "Извините, все бесплатные модели временно недоступны. Попробуйте позже."
+    return "Қателік."
 
 
 def main():
@@ -125,7 +125,7 @@ def main():
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     # Запускаем бота
-    logger.info("Бот запущен с бесплатными моделями!")
+    logger.info("Бот қосылды!")
     logger.info(f"Системный промпт: {SYSTEM_PROMPT[:50]}...")
     application.run_polling()
 
@@ -133,3 +133,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
